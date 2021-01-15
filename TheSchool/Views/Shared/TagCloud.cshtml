@@ -1,0 +1,21 @@
+﻿@model TheSchool.Models.TagCloudModel
+
+<div class="container" id="TagCloud">
+    <div class="row">
+        <h2>@Html.ActionLink("Tag Cloud", "Index", "Listing", null, null)</h2>
+    </div>
+    <div>
+        @if (Model.Tags != null)
+        {
+            @foreach (var tag in Model.Tags)
+            {
+                <span>
+                    @Html.ActionLink(tag.Tag, "Index", "Listing", new { tag.Tag }, new { @class = Model.GetCssClass(tag.Count) })
+                </span>
+            }
+        }
+    </div>
+</div>
+
+
+

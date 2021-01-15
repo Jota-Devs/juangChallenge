@@ -1,0 +1,39 @@
+﻿@model TheSchool.Models.QuestionAndAnswerModel
+
+<div class="container" id="EntryForm">
+    <div class="row">
+        <form method="post" action="Home/New">
+            @Html.AntiForgeryToken()
+
+            @Html.TextAreaFor(x => x.Question, new { @placeholder = "Your question", @class = "form-control", @style="width: 100%" })
+            <br />
+            @Html.TextAreaFor(x => x.Answer, new { placeholder = "Your answer", @class = "form-control" })
+            <br />
+            @Html.TextAreaFor(x => x.Tags, new { placeholder = "Comma separated", @class = "form-control" })
+            <br />
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+<style>
+
+    .progress {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-top: -50px;
+        margin-left: -100px;
+        height: 150px;
+        width: 150px;
+    }
+
+    .divhide {
+        display: none;
+    }
+
+    .divShow {
+        display: normal;
+    }
+</style>
+

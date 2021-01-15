@@ -1,0 +1,5 @@
+How can I use Sametime outside TCS network?\tGo to https://chat.tcs.com, enter your credentials. There are two possible options: a) User web browser version of Sametime. B) Download zip files and proceed with the installation process.
+How to fill timesheets?\tGo to Ultimatix and select Timesheets link from Word Cloud.
+How to de-allocate a team member from WON?\tEasy. First sign in into Ultimatix, go to PMG application enter Employee ID and finally update the end date for allocation.
+How to book the Video Conference room?\tSend an email to Admin department (admin@tcs.com) detailing the time frame and date you want to book the video conference room, once confirmed a notification is sent back to you.
+How often do I need to fill timesheets?\tYou should fill your timesheets as frequent as possible. Normally, registering the working hours on the system would be good enough and it's considered a good practice.

@@ -1,0 +1,31 @@
+﻿@model TheSchool.Models.ConversationModel
+
+@{
+    ViewBag.Title = "Conversation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Let's have a smart conversation.. ask me something</h2>
+<br />
+<div class="container">
+    <div class="col-md-6">
+        <div class="form-group">
+            @using (Html.BeginForm("Conversation", "Bot", FormMethod.Post, new { @class = "form-inline" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group" style="width:100%; vertical-align:bottom">
+                    <input type="text" class="form-control" name="txtYourQuestion" value="" />
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            }
+        </div>
+        <div class="col-md-6">
+            @foreach (var item in Model.Messages)
+            {
+                <div class="question alert alert-success"><strong>You</strong>: @item.Question</div>
+                <div class="answer alert alert-info" ><strong>Wispero</strong>: @item.Answer</div>
+                <br class="divider" role="separator"/>
+            }
+        </div>
+    </div>
+</div>

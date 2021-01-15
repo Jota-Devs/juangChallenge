@@ -1,0 +1,65 @@
+﻿@model TheSchool.Models.QuestionAndAnswerEditModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Question", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-2">
+                <label>Question</label>
+            </div>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Question, 5, 100,  new { @class = "form-control", @style = "min-width: 100%", @required="required" } )
+                @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                <label>Answer</label>
+            </div>
+
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Answer, 5, 1, new { @class = "form-control", @style = "min-width: 100%", @required = "required" })
+                @Html.ValidationMessageFor(model => model.Answer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                <label>Tags</label>
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Tags, new { @class = "form-control", @required = "required" })
+                @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.RowVersion)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Home", "Index", "Home", null, null)
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

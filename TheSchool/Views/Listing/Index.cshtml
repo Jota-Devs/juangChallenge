@@ -1,0 +1,63 @@
+﻿@model TheSchool.Models.ListingViewModel
+@{
+    ViewBag.Title = Model.Tag;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Tag</h2>
+<div class="container">
+    <div class="row">
+
+        <div class="btn-group">
+            @using (Html.BeginForm("ExportQnAMaker", "Listing", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-primary">Download Knowledge Database</button>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Question</td>
+                        <td>Answer</td>
+                        <td>Tags</td>
+                        <td>Updated On</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Questions)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Question</td>
+                            <td>@item.Answer</td>
+                            <td>@item.Tags</td>
+                            <td>@item.LastUpdateOn</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Edit", "Edit", "Question", new { Id = item.Id }, null)</li>
+                                        <li role="separator" class="divider"></li>
+                                        <li>@Html.ActionLink("Delete", "Delete", "Question", new { Id = item.Id }, null)</li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to Home", "Index", "Home", null, null)
+</div>
+
