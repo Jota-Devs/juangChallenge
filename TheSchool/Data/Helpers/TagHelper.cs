@@ -41,7 +41,7 @@ namespace TheSchool.Data.Helpers
                         sum.Count += 1;
                     }
                 }
-                tagMaxCount = ret.Count;
+                tagMaxCount = ret.Max(c=>c.Count);
             }
             return ret;
         }

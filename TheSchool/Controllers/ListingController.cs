@@ -45,6 +45,7 @@ namespace TheSchool.Controllers
 
            List<KnowledgeBaseItem> listaBase;
            ListingViewModel lvm = new ListingViewModel();
+            lvm.Tag = tag;
            if (!string.IsNullOrEmpty(tag))
             {
                 listaBase = KnowledgeQuery.GetByFilter(x => x.Tags.Contains(tag));

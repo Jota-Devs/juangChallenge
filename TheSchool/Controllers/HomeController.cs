@@ -76,10 +76,10 @@ namespace TheSchool.Controllers
             //TODO: Return partival view "TagCloud" with an instance of TagCloudviewModel.
             //You need to call TagHelper.Process as shown below.
             int max;
-            var tagItems = TagHelper.Process(KnowledgeBaseQuery, out max);  
-            TagCloudModel tcm = new TagCloudModel(); 
+            var tagItems = TagHelper.Process(KnowledgeBaseQuery, out max);
+            TagCloudModel tcm = new TagCloudModel();
             tcm.Tags = new List<TagModel>();
-            foreach (var i in tagItems) 
+            foreach (TagItem i in tagItems)
             {
                 var tag = mapper.Map<TagItem, TagModel>(i);
                 tcm.Tags.Add(tag);
