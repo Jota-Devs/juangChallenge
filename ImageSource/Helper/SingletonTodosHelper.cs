@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Caching.Memory;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -12,7 +13,7 @@ namespace ImageSource.Helper
 {
     public class SingletonTodosHelper : ApiHelper<Todos>
     {
-        private static volatile IQueryable<Todos> _localCache;
+        private static volatile IQueryable<Todos> _localCache; 
         private static object _lock = new object();
 
         public SingletonTodosHelper(IRestClient restClient, ISerializer serializer) 
@@ -21,13 +22,19 @@ namespace ImageSource.Helper
         }
 
         public new IQueryable<Todos> GetAll()
-        {
+       {
+
+
             /////////////////////////////////////////////////////////////////////////////////////////////
             //TODO: Make your code changes here so we can keep the same reference value object all the time.
             //base.GetAll() should be called once irrespectively of how many instances of SingletonPhotoHelper 
             //are created. You can change LocalCache definition.
-           
-            throw new NotImplementedException();
+            CacheTodosHelper cache = new CacheTodosHelper(base.RestClient, base.Serializer, new MemoryCache(new MemoryCacheOptions()));
+            if (_localCache == null)
+            {   
+                _localCache = cache.GetAll();
+            }
+            return _localCache ;            //throw new NotImplementedException();
             /////////////////////////////////////////////////////////////////////////////////////////////
         }
         

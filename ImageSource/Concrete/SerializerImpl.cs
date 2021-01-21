@@ -12,15 +12,17 @@ namespace ImageSource.Concrete
         public string ToJson<T>(T source)
         {
             //TODO: Implement a Serialize method from Object to JSON string.
-            string ret = JsonSerializer.Serialize(source);
+            string ret = JsonSerializer.Serialize<T>(source);
             return ret;
             // throw new NotImplementedException();
         }
 
         public T ToObject<T>(string source)
         {
+
             //TODO: Implement a Deserialize method from JSON string to Object.
-            T ret = JsonSerializer.Deserialize<T>(source);
+            //var ret = JsonSerializer.Deserialize<T>(source);
+            var ret = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(source);
             return ret;
             //throw new NotImplementedException();
         }

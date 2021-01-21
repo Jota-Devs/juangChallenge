@@ -29,9 +29,15 @@ namespace ImageSource.Helper
             //TODO: Make your code changes here so we can keep the same reference value object all the time.
             //base.GetAll() should be called once irrespectively of how many instances of CacheTodosHelper 
             //are created. Implement MemoryCache to keep the results from base.GetAll() cached for 20 seconds.
-            
-
-            throw new NotImplementedException();
+            string cacheK;
+            if (!_localCache.TryGetValue("key", out cacheK))
+            {
+                _lock = base.GetAll();
+                var cache = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(20));
+                _localCache.Set("key", cacheK, cache);
+            }
+            return (IQueryable<Todos>)_lock;
+            //throw new NotImplementedException();
             /////////////////////////////////////////////////////////////////////////////////////////////
         }
         
