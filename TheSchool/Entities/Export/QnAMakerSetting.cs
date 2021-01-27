@@ -30,7 +30,6 @@ namespace TheSchool.Entities.Export
                             file.WriteLine(string.Format($"{item.Query}\\t{item.Answer}"));
                     }
             }
-           // throw new NotImplementedException();
         }
     }
 }

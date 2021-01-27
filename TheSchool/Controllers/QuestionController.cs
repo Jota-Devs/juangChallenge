@@ -54,16 +54,15 @@ namespace TheSchool.Controllers
                 KnowledgeData.Edit(qna);
                 return RedirectToAction("Index", "Listing");
             }
-            else if
-                 (string.IsNullOrEmpty(model.Question))
+            else if (string.IsNullOrEmpty(model.Question))
                 {
                     ModelState.AddModelError("Question", "error question");
                 }
-                else if (string.IsNullOrEmpty(model.Answer))
+            else if (string.IsNullOrEmpty(model.Answer))
                 {
                     ModelState.AddModelError("Answer", "Answer is required");
                 }
-                else if (string.IsNullOrEmpty(model.Tags))
+            else if (string.IsNullOrEmpty(model.Tags))
                 {
                     ModelState.AddModelError("Tags", "error Tags");
                 }

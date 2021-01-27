@@ -94,7 +94,7 @@ namespace TheSchool.Controllers
         {
             //TODO: Return partial view "Index" to reload the page.
             //If model is valid then persists the new entry on DB. Make sure  data changes are committed.
-           
+
             ModelStateDictionary ms = new ModelStateDictionary();
             if (string.IsNullOrEmpty(model.Question))
             {

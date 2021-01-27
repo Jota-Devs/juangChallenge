@@ -21,9 +21,10 @@ namespace TheSchool.Data
 
         #region Methods
         public void Add(KnowledgeBaseItem entity)
-        { 
+        {
             //TODO: Implement Adding mechanism for KnowledgeBaseItems.
             _context.KnowledgeBaseItems.Add(entity);
+
             CommitChanges(); 
         }
 

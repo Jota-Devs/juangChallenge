@@ -29,10 +29,13 @@ namespace ImageSource.Helper
             //TODO: Make your code changes here so we can keep the same reference value object all the time.
             //base.GetAll() should be called once irrespectively of how many instances of SingletonPhotoHelper 
             //are created. You can change LocalCache definition.
-            CacheTodosHelper cache = new CacheTodosHelper(base.RestClient, base.Serializer, new MemoryCache(new MemoryCacheOptions()));
-            if (_localCache == null)
-            {   
-                _localCache = cache.GetAll();
+            lock (_lock)
+            {
+                if (_localCache == null)
+                {   
+                    CacheTodosHelper cache = new CacheTodosHelper(base.RestClient, base.Serializer, new MemoryCache(new MemoryCacheOptions()));
+                    _localCache = cache.GetAll();
+                }
             }
             return _localCache ;            //throw new NotImplementedException();
             /////////////////////////////////////////////////////////////////////////////////////////////

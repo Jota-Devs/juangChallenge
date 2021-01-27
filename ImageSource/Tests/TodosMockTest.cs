@@ -29,7 +29,6 @@ namespace ImageSource
 
             /////////////////////////////////////////////////////////////////////////////////
             //TODO: Use Moq.Mocks as we want to use rawJason as data source, your code here..
-            Console.WriteLine();
             client = new Mock<IRestClient>();
             client.Setup(c => c.Get($"https://jsonplaceholder.typicode.com/photo")).Returns(rawJson);
             client.SetupGet(c => c.HitCounter).Returns(2); // consultar
